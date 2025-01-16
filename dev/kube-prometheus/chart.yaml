@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/part-of: kube-prometheus
     app.kubernetes.io/version: 11.4.0
   name: grafana
-  namespace: default+
+  namespace: monitoring
 spec:
   ports:
   - name: http
