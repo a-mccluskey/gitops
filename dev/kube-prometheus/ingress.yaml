@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/server-snippet: |
+      return 301 $scheme://grafana2.atomway.co.uk$request_uri;
+  labels:
+  name: kube-prometheus-grafana-additional
+  namespace: monitoring
+spec:
+  ingressClassName: public
+  rules:
+  - host: grafana2.atomway.co.uk
+    http:
+      paths:
+      - backend:
+          service:
+            name: grafana
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
